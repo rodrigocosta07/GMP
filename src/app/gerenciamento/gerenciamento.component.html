@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">
+    <div class="float-left">
+      <h4>Medicamentos no estoque</h4>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-primary" [routerLink]="[ 'CadastroMedicamento']">Adicionar
+        Medicamento</button>
+    </div>
+  </div>
+</div>
+<div class="card-body">
+  <div class="table-responsive">
+
+
+    <table class="table table-hover" *ngIf="medicamentos ; else loading">
+      <thead>
+        <tr>
+          <th>Medicamento</th>
+          <th>Quantidade</th>
+          <th>Posto</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let remedio of medicamentos">
+          <td>{{remedio.nome}}</td>
+          <td>{{remedio.quantidade}}</td>
+          <td>{{remedio.posto.nome}}</td>
+          <td>
+            <span class="float-right">
+              <button (click)="atualizarMedicamento(remedio)" class="btn btn-outline-warning mb-1 btn-sm">
+                Atualizar
+              </button>
+              <button (click)="deletarMedicamento(remedio)" class="btn btn-outline-danger mb-1 btn-sm">
+                Deletar
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #loading>
+    <span>Carregando Medicamentos...</span>
+  </ng-template>
+
+</div>

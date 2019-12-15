@@ -1,0 +1,28 @@
+<div [formGroup]="formSaida" class="example-container">
+
+  <mat-form-field>
+    <mat-label>Medicamento</mat-label>
+    <mat-select formControlName="medicamento">
+      <mat-option *ngFor="let medicamento of medicamentos" [value]="medicamento">
+        {{medicamento.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Quantidade" formControlName="quantidade">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Nome do Paciente" formControlName="paciente">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Numero do SUS" formControlName="numeroSus">
+  </mat-form-field>
+
+  <div class="col px-md-5" style="margin-top: 10px">
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+    <button type="button" class="btn btn-default" [routerLink]="['']">Cancelar</button>
+  </div>
+</div>

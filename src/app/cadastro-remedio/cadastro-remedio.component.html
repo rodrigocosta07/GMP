@@ -1,0 +1,24 @@
+<div [formGroup]="formRemedio" class="example-container">
+
+    <mat-form-field>
+      <input matInput placeholder="Medicamento" formControlName="nome">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Quantidade" formControlName="quantidade">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Posto</mat-label>
+      <mat-select [compareWith]="compareFn" formControlName="posto">
+        <mat-option *ngFor="let posto of postos" [value]="posto" >
+          {{posto.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  <div class="col px-md-5" style="margin-top: 10px">
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+    <button type="button" class="btn btn-default" [routerLink]="['']">Cancelar</button>
+  </div>
+</div>

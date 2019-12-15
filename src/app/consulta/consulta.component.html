@@ -1,0 +1,29 @@
+<div class="example-form">
+  <mat-form-field class="example-full-width">
+    <input (input)="search()" [(ngModel)]="searchModel" type="text" placeholder="Digite o nome do remédio que deseja"
+      aria-label="remedio" matInput [matAutocomplete]="auto">
+    <mat-autocomplete  #auto="matAutocomplete">
+      <mat-option  (click)="selectItem(option)" *ngFor="let option of filteredOptions | async" [value]="option.nome">
+        {{option.nome}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-card *ngIf="remedioSelecionado">{{remedioSelecionado.nome}}
+    <mat-card-content>
+      <div *ngIf="remedioSelecionado.quantidade > 0 ">
+        <p>
+          Posto: {{remedioSelecionado.posto.nome}}
+        </p>
+        <p>
+          Local: {{remedioSelecionado.posto.cidade}}
+        </p>
+      </div>
+      <div *ngIf="remedioSelecionado.quantidade == 0">
+          <p>
+              Não há postos com esse medicamento disponivel! 
+            </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>
